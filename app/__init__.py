@@ -1,0 +1,11 @@
+from fastapi import FastAPI
+from app.configuration.server import Server
+
+def create_app(_=None) -> FastAPI:
+    app = FastAPI()
+
+    @app.get("/")
+    def read_root():
+        return {"message": "Hello World"}
+    
+    return Server(app).get_app()
